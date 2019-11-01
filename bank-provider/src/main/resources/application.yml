@@ -1,0 +1,42 @@
+---
+server:
+  port: 7201
+spring:
+  profiles: provid1
+  application:
+    name: bank-provider
+eureka:
+  instance:
+    hostname: provid1
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7101/eureka/,http://localhost:7102/eureka/
+---
+server:
+  port: 7202
+#映射到dao层(即mapper生成的位置)
+mybatis:
+  type-aliases-package: com.zking.model
+#mapper.xml文件生成位置
+  mapper-locations: classpath:mapper/*Mapper.xml
+spring:
+  profiles: provid2
+  application:
+    name: bank-provider
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
+    driver-class-name: org.gjt.mm.mysql.Driver
+    url: jdbc:mysql://localhost:3306/bank?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
+    username: root
+    password: 123
+  dbcp2:
+   min-idle: 5                                           
+   initial-size: 5                                       
+   max-total: 5                                          
+   max-wait-millis: 200   
+eureka:
+  instance:
+    hostname: provid2
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7101/eureka/,http://localhost:7103/eureka/

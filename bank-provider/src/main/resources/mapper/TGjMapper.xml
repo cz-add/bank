@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.bankprovider.mapper.TGjMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.bankprovider.model.TGj" >
+    <constructor >
+      <idArg column="jid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="gjid" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="gjz" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="content" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="gimage" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    jid, gjid, gjz, content, gimage
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_gj
+    where jid = #{jid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_gj
+    where jid = #{jid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.bankprovider.model.TGj" >
+    insert into t_gj (jid, gjid, gjz, 
+      content, gimage)
+    values (#{jid,jdbcType=INTEGER}, #{gjid,jdbcType=INTEGER}, #{gjz,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{gimage,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.bankprovider.model.TGj" >
+    insert into t_gj
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="jid != null" >
+        jid,
+      </if>
+      <if test="gjid != null" >
+        gjid,
+      </if>
+      <if test="gjz != null" >
+        gjz,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="gimage != null" >
+        gimage,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="jid != null" >
+        #{jid,jdbcType=INTEGER},
+      </if>
+      <if test="gjid != null" >
+        #{gjid,jdbcType=INTEGER},
+      </if>
+      <if test="gjz != null" >
+        #{gjz,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="gimage != null" >
+        #{gimage,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.bankprovider.model.TGj" >
+    update t_gj
+    <set >
+      <if test="gjid != null" >
+        gjid = #{gjid,jdbcType=INTEGER},
+      </if>
+      <if test="gjz != null" >
+        gjz = #{gjz,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="gimage != null" >
+        gimage = #{gimage,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where jid = #{jid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.bankprovider.model.TGj" >
+    update t_gj
+    set gjid = #{gjid,jdbcType=INTEGER},
+      gjz = #{gjz,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      gimage = #{gimage,jdbcType=VARCHAR}
+    where jid = #{jid,jdbcType=INTEGER}
+  </update>
+</mapper>

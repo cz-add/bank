@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.bankprovider.mapper.WxAccinfoMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.bankprovider.model.WxAccinfo" >
+    <constructor >
+      <idArg column="Accno" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Accname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="cname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Platkey" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Summary" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Operno" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Opertime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="state" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Accno, Accname, cname, Phone, Platkey, Summary, Operno, Opertime, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from wx_accinfo
+    where Accno = #{accno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from wx_accinfo
+    where Accno = #{accno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zking.bankprovider.model.WxAccinfo" >
+    insert into wx_accinfo (Accno, Accname, cname, 
+      Phone, Platkey, Summary, 
+      Operno, Opertime, state
+      )
+    values (#{accno,jdbcType=VARCHAR}, #{accname,jdbcType=VARCHAR}, #{cname,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{platkey,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, 
+      #{operno,jdbcType=VARCHAR}, #{opertime,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.bankprovider.model.WxAccinfo" >
+    insert into wx_accinfo
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accno != null" >
+        Accno,
+      </if>
+      <if test="accname != null" >
+        Accname,
+      </if>
+      <if test="cname != null" >
+        cname,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="platkey != null" >
+        Platkey,
+      </if>
+      <if test="summary != null" >
+        Summary,
+      </if>
+      <if test="operno != null" >
+        Operno,
+      </if>
+      <if test="opertime != null" >
+        Opertime,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accno != null" >
+        #{accno,jdbcType=VARCHAR},
+      </if>
+      <if test="accname != null" >
+        #{accname,jdbcType=VARCHAR},
+      </if>
+      <if test="cname != null" >
+        #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="platkey != null" >
+        #{platkey,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="operno != null" >
+        #{operno,jdbcType=VARCHAR},
+      </if>
+      <if test="opertime != null" >
+        #{opertime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.bankprovider.model.WxAccinfo" >
+    update wx_accinfo
+    <set >
+      <if test="accname != null" >
+        Accname = #{accname,jdbcType=VARCHAR},
+      </if>
+      <if test="cname != null" >
+        cname = #{cname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="platkey != null" >
+        Platkey = #{platkey,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        Summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="operno != null" >
+        Operno = #{operno,jdbcType=VARCHAR},
+      </if>
+      <if test="opertime != null" >
+        Opertime = #{opertime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Accno = #{accno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.bankprovider.model.WxAccinfo" >
+    update wx_accinfo
+    set Accname = #{accname,jdbcType=VARCHAR},
+      cname = #{cname,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Platkey = #{platkey,jdbcType=VARCHAR},
+      Summary = #{summary,jdbcType=VARCHAR},
+      Operno = #{operno,jdbcType=VARCHAR},
+      Opertime = #{opertime,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where Accno = #{accno,jdbcType=VARCHAR}
+  </update>
+</mapper>

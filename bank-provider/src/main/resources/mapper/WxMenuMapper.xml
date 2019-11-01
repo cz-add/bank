@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.bankprovider.mapper.WxMenuMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.bankprovider.model.WxMenu" >
+    <constructor >
+      <arg column="Accno" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Menuname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Subname" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Seqno" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Menukey" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Summary" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Operno" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Opertime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="State" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Isupdate" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Uptime" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="upstate" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <insert id="insert" parameterType="com.zking.bankprovider.model.WxMenu" >
+    insert into wx_menu (Accno, Menuname, Subname, 
+      Seqno, Menukey, Summary, 
+      Operno, Opertime, State, 
+      Isupdate, Uptime, upstate
+      )
+    values (#{accno,jdbcType=VARCHAR}, #{menuname,jdbcType=VARCHAR}, #{subname,jdbcType=VARCHAR}, 
+      #{seqno,jdbcType=INTEGER}, #{menukey,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, 
+      #{operno,jdbcType=VARCHAR}, #{opertime,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{isupdate,jdbcType=VARCHAR}, #{uptime,jdbcType=VARCHAR}, #{upstate,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.bankprovider.model.WxMenu" >
+    insert into wx_menu
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accno != null" >
+        Accno,
+      </if>
+      <if test="menuname != null" >
+        Menuname,
+      </if>
+      <if test="subname != null" >
+        Subname,
+      </if>
+      <if test="seqno != null" >
+        Seqno,
+      </if>
+      <if test="menukey != null" >
+        Menukey,
+      </if>
+      <if test="summary != null" >
+        Summary,
+      </if>
+      <if test="operno != null" >
+        Operno,
+      </if>
+      <if test="opertime != null" >
+        Opertime,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+      <if test="isupdate != null" >
+        Isupdate,
+      </if>
+      <if test="uptime != null" >
+        Uptime,
+      </if>
+      <if test="upstate != null" >
+        upstate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accno != null" >
+        #{accno,jdbcType=VARCHAR},
+      </if>
+      <if test="menuname != null" >
+        #{menuname,jdbcType=VARCHAR},
+      </if>
+      <if test="subname != null" >
+        #{subname,jdbcType=VARCHAR},
+      </if>
+      <if test="seqno != null" >
+        #{seqno,jdbcType=INTEGER},
+      </if>
+      <if test="menukey != null" >
+        #{menukey,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="operno != null" >
+        #{operno,jdbcType=VARCHAR},
+      </if>
+      <if test="opertime != null" >
+        #{opertime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="isupdate != null" >
+        #{isupdate,jdbcType=VARCHAR},
+      </if>
+      <if test="uptime != null" >
+        #{uptime,jdbcType=VARCHAR},
+      </if>
+      <if test="upstate != null" >
+        #{upstate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

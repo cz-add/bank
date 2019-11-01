@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.bankprovider.mapper.TDictMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.bankprovider.model.TDict" >
+    <constructor >
+      <idArg column="did" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="dtype" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="dcontent" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="djs" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    did, dtype, dcontent, djs
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_dict
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_dict
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.bankprovider.model.TDict" >
+    insert into t_dict (did, dtype, dcontent, 
+      djs)
+    values (#{did,jdbcType=INTEGER}, #{dtype,jdbcType=VARCHAR}, #{dcontent,jdbcType=VARCHAR}, 
+      #{djs,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.bankprovider.model.TDict" >
+    insert into t_dict
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        did,
+      </if>
+      <if test="dtype != null" >
+        dtype,
+      </if>
+      <if test="dcontent != null" >
+        dcontent,
+      </if>
+      <if test="djs != null" >
+        djs,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="did != null" >
+        #{did,jdbcType=INTEGER},
+      </if>
+      <if test="dtype != null" >
+        #{dtype,jdbcType=VARCHAR},
+      </if>
+      <if test="dcontent != null" >
+        #{dcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="djs != null" >
+        #{djs,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.bankprovider.model.TDict" >
+    update t_dict
+    <set >
+      <if test="dtype != null" >
+        dtype = #{dtype,jdbcType=VARCHAR},
+      </if>
+      <if test="dcontent != null" >
+        dcontent = #{dcontent,jdbcType=VARCHAR},
+      </if>
+      <if test="djs != null" >
+        djs = #{djs,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.bankprovider.model.TDict" >
+    update t_dict
+    set dtype = #{dtype,jdbcType=VARCHAR},
+      dcontent = #{dcontent,jdbcType=VARCHAR},
+      djs = #{djs,jdbcType=VARCHAR}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+</mapper>
